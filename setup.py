@@ -15,9 +15,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="",
     packages=setuptools.find_packages(),
-    install_requires=["numpy","healpy","matplotlib","scipy","pandas"]
-    classifiers=[
-        "Programming Language :: Python :: 3",
+    install_requires=["numpy","healpy","matplotlib","scipy","pandas"],
+    classifiers=["Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

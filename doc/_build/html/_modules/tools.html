@@ -94,6 +94,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../needlets.html">Needlets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maxima.html">Maxima</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mt.html">Multiple Testing</a></li>
@@ -169,7 +170,7 @@
 <span class="c1"># from scipy.stats import norm</span>
 <span class="c1"># import scipy.integrate as integrate</span>
 <span class="c1"># import os</span>
-<span class="c1"># import warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="c1"># import subprocess</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="c1"># import numpy.ma as ma</span>
@@ -190,7 +191,7 @@
         <span class="n">transform</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">transFigure</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     
     
-<div class="viewcode-block" id="maximum_info"><a class="viewcode-back" href="../tools/tools.maximum_info.html#tools.maximum_info">[docs]</a><span class="k">def</span> <span class="nf">maximum_info</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">mapp</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="maximum_info"><a class="viewcode-back" href="../functions/tools.maximum_info.html#tools.maximum_info">[docs]</a><span class="k">def</span> <span class="nf">maximum_info</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">mapp</span><span class="p">,</span><span class="n">nmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Show a plot with a maximum and some information about it.</span>
 <span class="sd">    </span>
 <span class="sd">    Utility function to easily view the basic propierties of a specific maximum.</span>

@@ -23,7 +23,7 @@ spherical maps.
    :maxdepth: 2
    :caption: Contents:
    
-    installation
+   installation
    needlets
    maxima
    mt

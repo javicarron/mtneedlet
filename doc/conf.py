@@ -14,7 +14,19 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('/home/javier/data/mtneedlet/mtneedlet'))
+sys.path.insert(0, os.path.abspath('../mtneedlet'))
+#sys.path.insert(0, os.path.abspath('../doc/functions'))
+
+
+#from unittest.mock import MagicMock
+#
+#class Mock(MagicMock):
+#    @classmethod
+#    def __getattr__(cls, name):
+#        return MagicMock()
+#
+#MOCK_MODULES = ['healpy', 'numpy', 'pandas']
+#sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 
 # -- Project information -----------------------------------------------------
@@ -173,8 +185,8 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 # -- Options for todo extension ----------------------------------------------
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
+todo_include_todos = False
 
 
-autosummary_generate=True
-add_module_names = False
+autosummary_generate = True
+add_module_names = True

@@ -22,7 +22,7 @@ Maxima detection
 ----------------
 
 .. autosummary::
-   :toctree: functions
+   :toctree: functions/
 
    hotspot
 
@@ -31,7 +31,7 @@ Analysis
 --------
 
 .. autosummary::
-   :toctree: functions
+   :toctree: functions/
 
    locate_maxima
    max_inmask
@@ -42,6 +42,6 @@ Maxima visualization
 --------------------
 
 .. autosummary::
-   :toctree: functions
+   :toctree: functions/
 
    plot_maxima

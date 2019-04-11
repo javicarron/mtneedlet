@@ -10,6 +10,6 @@ Visualization
 -------------
 
 .. autosummary::
-   :toctree: tools
+   :toctree: functions
 
    maximum_info
