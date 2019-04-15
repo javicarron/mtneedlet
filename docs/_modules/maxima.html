@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>maxima &mdash; MTNeedlet 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MTNeedlet
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../needlets.html">Needlets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maxima.html">Maxima</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mt.html">Multiple Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Extra tools</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MTNeedlet</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>maxima</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for maxima</h1><div class="highlight"><pre>
+<span></span>
+
+<span class="kn">import</span> <span class="nn">healpy</span> <span class="k">as</span> <span class="nn">hp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># from scipy.special import gamma as gafun</span>
+<span class="c1"># from scipy.stats import norm</span>
+<span class="c1"># import scipy.integrate as integrate</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># import warnings</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># import numpy.ma as ma</span>
+
+
+<span class="c1">#def findmaxima</span>
+<span class="k">def</span> <span class="nf">_readmax_forhotspot</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">folder</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Read the output file generated by hotspot&#39;&#39;&#39;</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{folder}{file}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">toreturn</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pixel number&#39;</span><span class="p">,</span><span class="s1">&#39;Intensity&#39;</span><span class="p">])</span>
+    <span class="n">toreturn</span><span class="p">[</span><span class="s1">&#39;Pixel number&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">toreturn</span><span class="p">[</span><span class="s1">&#39;Pixel number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">toreturn</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Intensity&#39;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="hotspot"><a class="viewcode-back" href="../functions/maxima.hotspot.html#maxima.hotspot">[docs]</a><span class="k">def</span> <span class="nf">hotspot</span><span class="p">(</span><span class="n">mapp</span><span class="p">,</span> <span class="n">minima</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Map&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Find the maxima (or minima) in a map.</span>
+<span class="sd">    </span>
+<span class="sd">    Notes</span>
+<span class="sd">    ----</span>
+<span class="sd">    This function use the Healpix utility ``hotspot``, which is not implemented in Python distribution of Healpix.</span>
+<span class="sd">    The utility ``healpix`` is called on a terminal and it writes files on the hard drive. This function deletes these</span>
+<span class="sd">    files after the are read by Python unless a specific folder is given as an input.</span>
+<span class="sd">    </span>
+<span class="sd">    The utility has several limitations regarding the intensity of the maxima. It only stores 4 digits before the </span>
+<span class="sd">    period and 6 digits after it. It is highly recommended to normalise the map before using this function. For extreme</span>
+<span class="sd">    cases, outliers have to be removed, for example with::</span>
+<span class="sd">    &gt;&gt;&gt; mapp[mapp&gt;9999]=9999</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mapp : np.ndarray</span>
+<span class="sd">        A Healpy map of the sky.</span>
+<span class="sd">    minima : bool, optional</span>
+<span class="sd">        If ``True``, this function return the minima instead of the maxima. We remind the user that the rest of the functions</span>
+<span class="sd">        are designed for set of maxima. If minima are to be used, we recommend changing the sign of the minima so the can be</span>
+<span class="sd">        regarded as maxima of the **opposite** map.</span>
+<span class="sd">    folder : str, optional</span>
+<span class="sd">        Use only if the files generated by ``hotspot`` are to be stored. This argument indicates where.</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        The name of the map to use in the written files. Unnecesary unless ``folder`` is given.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        Pandas DataFrame with two columns: &#39;Pixel number&#39; denotes the number of the pixel where the maximum is detected (depends </span>
+<span class="sd">        on the ``nside`` of ``mapp``); &#39;Intensity&#39; denotes the value of this maxima in the input map</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">rem</span><span class="o">=</span><span class="kc">False</span>
+    <span class="k">if</span> <span class="n">folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rem</span><span class="o">=</span><span class="kc">True</span>
+        <span class="n">folder</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">folder</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">folder</span><span class="o">=</span><span class="n">folder</span><span class="o">+</span><span class="s1">&#39;/&#39;</span>
+    <span class="n">hp</span><span class="o">.</span><span class="n">write_map</span><span class="p">(</span><span class="n">folder</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span><span class="n">mapp</span><span class="p">);</span>
+    <span class="n">hotspotfile</span><span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{folder}{name}</span><span class="s1">.par&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">hotspotfile</span><span class="o">.</span><span class="n">writelines</span><span class="p">([</span><span class="n">f</span><span class="s1">&#39;infile=</span><span class="si">{folder}{name}</span><span class="s1">.fits </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">f</span><span class="s1">&#39;extrema_outfile = </span><span class="si">{folder}</span><span class="s1">pixlminmax_</span><span class="si">{name}</span><span class="s1">.fits </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">f</span><span class="s1">&#39;maxima_outfile = </span><span class="si">{folder}</span><span class="s1">maxima_</span><span class="si">{name}</span><span class="s1">.dat </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">f</span><span class="s1">&#39;minima_outfile = </span><span class="si">{folder}</span><span class="s1">minima_</span><span class="si">{name}</span><span class="s1">.dat&#39;</span><span class="p">])</span>
+    <span class="n">hotspotfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">f</span><span class="s1">&#39;hotspot </span><span class="si">{folder}{name}</span><span class="s1">.par &gt; /dev/null&#39;</span><span class="p">],</span><span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#     !hotspot {name}.par &gt; /dev/null</span>
+    
+    <span class="k">if</span> <span class="n">minima</span> <span class="o">!=</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">toreturn</span><span class="o">=</span><span class="n">_readmax_forhotspot</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{folder}</span><span class="s1">maxima_</span><span class="si">{name}</span><span class="s1">.dat&#39;</span><span class="p">)</span> <span class="c1">#maxima</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">toreturn</span><span class="o">=</span><span class="n">_readmax_forhotspot</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{folder}</span><span class="s1">minima_</span><span class="si">{name}</span><span class="s1">.dat&#39;</span><span class="p">)</span> <span class="c1">#minima</span>
+    
+    <span class="k">if</span> <span class="n">rem</span><span class="p">:</span>  <span class="c1">#This is True is there is not an input folder</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">.fits&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">.par&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;maxima_</span><span class="si">{name}</span><span class="s1">.dat&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;pixlminmax_</span><span class="si">{name}</span><span class="s1">.fits&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;minima_</span><span class="si">{name}</span><span class="s1">.dat&#39;</span><span class="p">)</span>
+                  
+    <span class="k">return</span><span class="p">(</span><span class="n">toreturn</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="locate_maxima"><a class="viewcode-back" href="../functions/maxima.locate_maxima.html#maxima.locate_maxima">[docs]</a><span class="k">def</span> <span class="nf">locate_maxima</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">nside</span><span class="p">,</span><span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Find the location of the input maxima.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maxima : pd.DataFrame</span>
+<span class="sd">        Pandas DataFrame with the information of the maxima. Has to contain at least the column &#39;Pixel number&#39;.</span>
+<span class="sd">    nside : int</span>
+<span class="sd">        An integer corresponding to the ``nside`` of the map where the maxima where detected. It needs to be a power of 2.</span>
+<span class="sd">    lonlat : bool, optional</span>
+<span class="sd">        If ``True``, the functions returns the longitude and latitude, in degrees. If ``False``, the function returns </span>
+<span class="sd">        colatitude and longitude, in radians.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        The same Pandas DataFrame as the input ``maxima``, with two new columns denoting the position of each maxima on the sky.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">lonlat</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">name1</span><span class="p">,</span><span class="n">name2</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Colatitude [rad]&#39;</span><span class="p">,</span><span class="s1">&#39;Longitude [rad]&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">lonlat</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">name1</span><span class="p">,</span><span class="n">name2</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Longitude [deg]&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude[deg]&#39;</span><span class="p">]</span>
+    <span class="n">maxima</span><span class="p">[</span><span class="n">name1</span><span class="p">],</span><span class="n">maxima</span><span class="p">[</span><span class="n">name2</span><span class="p">]</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">pix2ang</span><span class="p">(</span><span class="n">nside</span><span class="p">,</span><span class="n">maxima</span><span class="p">[</span><span class="s1">&#39;Pixel number&#39;</span><span class="p">],</span><span class="n">lonlat</span><span class="o">=</span><span class="n">lonlat</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">maxima</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="max_inmask"><a class="viewcode-back" href="../functions/maxima.max_inmask.html#maxima.max_inmask">[docs]</a><span class="k">def</span> <span class="nf">max_inmask</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">withvalue</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Get the maxima located where the mask have a specific value (e.g., 1)</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maxima : pd.DataFrame</span>
+<span class="sd">        Pandas DataFrame with the information of the maxima. Has to contain at least the column &#39;Pixel number&#39;.</span>
+<span class="sd">    mask : np.ndarray</span>
+<span class="sd">        A Healpix map to be used as mask. **Its ``nside`` should be the same as the original map.**</span>
+<span class="sd">    withvalue : float, optional</span>
+<span class="sd">        Value to be matched. Only maxima that have this value on the ``mask`` will be returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        The same Pandas DataFrame as the input ``maxima``, but containing only the maxima located at points where the</span>
+<span class="sd">        ``mask`` has the value ``withvalue`` (1 by default).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">filtered_maxima</span><span class="o">=</span><span class="n">maxima</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">mask</span><span class="p">[</span><span class="n">maxima</span><span class="p">[</span><span class="s1">&#39;Pixel number&#39;</span><span class="p">]]</span><span class="o">==</span><span class="n">withvalue</span><span class="p">)]</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">filtered_maxima</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="max_threshold"><a class="viewcode-back" href="../functions/maxima.max_threshold.html#maxima.max_threshold">[docs]</a><span class="k">def</span> <span class="nf">max_threshold</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Get the maxima with intensity above or equal to a threshold</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maxima : pd.DataFrame</span>
+<span class="sd">        Pandas DataFrame with the information of the maxima. Has to contain at least the column &#39;Intensity&#39;.</span>
+<span class="sd">    threshold : float</span>
+<span class="sd">        Minimum value of the maxima to be returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        The same Pandas DataFrame as the input ``maxima``, but containing only the maxima with an intensity equal</span>
+<span class="sd">        or greater than ``threshold``.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">maxima</span><span class="p">[</span><span class="n">maxima</span><span class="p">[</span><span class="s1">&#39;Intensity&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">threshold</span><span class="p">])</span></div>
+    
+
+<div class="viewcode-block" id="plot_maxima"><a class="viewcode-back" href="../functions/maxima.plot_maxima.html#maxima.plot_maxima">[docs]</a><span class="k">def</span> <span class="nf">plot_maxima</span><span class="p">(</span><span class="n">maxima</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Visualise the maxima distribution and compare it with a theoretical one.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maxima : pd.DataFrame</span>
+<span class="sd">        Pandas DataFrame with the information of the maxima. Has to contain at least the column &#39;Intensity&#39;.</span>
+<span class="sd">    f : function or None, optional</span>
+<span class="sd">        Theoretical distribution of the maxima, f.</span>
+<span class="sd">    bins : int, optional</span>
+<span class="sd">        Number of bins for the histogram of the maxima</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.figure.Figure</span>
+<span class="sd">        Figure containing the histogram of the maxima intensity and, if included, the expected distribution from ``f``.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">num</span><span class="p">,</span><span class="n">xbins</span><span class="p">,</span><span class="n">_</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">maxima</span><span class="p">[</span><span class="s1">&#39;Intensity&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Maxima distribution of the map&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">xvec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xbins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xbins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">num</span><span class="o">=</span><span class="n">bins</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvec</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xvec</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Expected distribution&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="p">)</span></div>
+    
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Javier Carrón Duque
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
