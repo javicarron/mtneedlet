@@ -15,7 +15,7 @@ basic steps:
 #. The multiple testing approach in order to detect anomalies in the maxima population of the maps
    with respect to the expected behaviour for a random Gaussian map.
 
-The original code was created to reproduce the results on [1]_ and later used to produce the results on [2]_.
+The original code was created to reproduce the results on [1]_ and it was later used to produce the results on [2]_.
 This software heavily relies on Healpy (the Healpix implementation for Python) to eficiently deal with 
 spherical maps.
 
