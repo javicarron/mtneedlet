@@ -4,7 +4,7 @@ This is a Python Package aimed at the use of needlets to filter spherical maps,
 detecting the maxima within the maps and analysing them using a multiple
 testing approach.
 
-The documentation can be found at https://mtneedlet.readthedocs.io
+The documentation can be found at https://javicarron.github.io/mtneedlet/
 
 For more information on the theoretical background that inspired this work, see:
 
