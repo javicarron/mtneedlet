@@ -155,7 +155,7 @@ def _max_getpvalue_approx(vec_max,f,step=0.05,**kwargs):
     return(approx_pvalues)
 
 
-def max_getpvalue(maxima,f,n_exact=1000,step=0.05,**kwargs):
+def max_getpvalue(maxima,f,n_exact=1000,step=0.05,correct=True,**kwargs):
     '''Get the p-values for the maxima for a given expected distribution.
     
     Parameters
@@ -170,6 +170,8 @@ def max_getpvalue(maxima,f,n_exact=1000,step=0.05,**kwargs):
         procedure.
     step : float, optional
         Step of the array where the p-values are exactly computed after the first ``n_exact`` maxima.
+    correct : bool, optional
+        If ``True``, check that the pvalues are decreasing with intensity and, if it is not the case, change the value accordingly.
         
     Returns
     -------
@@ -186,6 +188,10 @@ def max_getpvalue(maxima,f,n_exact=1000,step=0.05,**kwargs):
     
     pvals=np.concatenate((pval_exact,pval_approx))
     maxima['pvalue']=pvals
+    
+    if correct:
+        for icorrect in np.argwhere(maxima['pvalue'].diff()<0.)[:,0]:       #correct the pvalues 
+            maxima['pvalue'].iloc[icorrect]=maxima['pvalue'].iloc[icorrect-1]
     
     return(maxima)
 
