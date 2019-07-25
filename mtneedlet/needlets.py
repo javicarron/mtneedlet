@@ -207,14 +207,14 @@ def mexicanneedlet(B,j,lmax,p=1,normalised=True):
             needs.append(bl)
     else:
         K=np.zeros(lmax+1)
-        jmax=np.log(5.*lmax)/np.log(B)
-        for jj in np.arange(1,jmax):
+        jmax=np.max((np.log(5.*lmax)/np.log(B),np.max(j)))
+        for jj in np.arange(1,jmax+1):
             u=(ls/B**jj)
             bl=u**2.*np.exp(-u**2.)
             K=K+bl**2.
             if np.isin(jj,j):
                 needs.append(bl)
-        needs=needs/np.mean(K[int(lmax/3):int(2*lmax/3)])
+        needs=needs/np.sqrt(np.mean(K[int(lmax/3):int(2*lmax/3)]))
     return(np.squeeze(needs))
     
 
