@@ -202,15 +202,19 @@ def mexicanneedlet(B,j,lmax,p=1,normalised=True):
     needs=[]
     if normalised != True:
         for jj in j:
-            u=(ls/B**jj)
-            bl=u**(2.*p)*np.exp(-u**2.)
+#            u=(ls/B**jj)
+#            bl=u**(2.*p)*np.exp(-u**2.)
+            u=((ls*(ls+1)/B**(2.*j)))
+            bl=(u**p)*np.exp(-u)
             needs.append(bl)
     else:
         K=np.zeros(lmax+1)
         jmax=np.max((np.log(5.*lmax)/np.log(B),np.max(j)))
         for jj in np.arange(1,jmax+1):
-            u=(ls/B**jj)
-            bl=u**2.*np.exp(-u**2.)
+#            u=(ls/B**jj)                   This is an almost identical definition
+#            bl=u**2.*np.exp(-u**2.)
+            u=((ls*(ls+1)/B**(2.*j)))
+            bl=(u**p)*np.exp(-u)
             K=K+bl**2.
             if np.isin(jj,j):
                 needs.append(bl)
