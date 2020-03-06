@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Needlets &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>Needlets &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="needlets.standardneedlet" href="functions/needlets.standardneedlet.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -188,57 +180,57 @@
 a np.ndarray of dimension 1, with the values of the function for each <span class="math notranslate nohighlight">\(\ell\)</span>, starting by <span class="math notranslate nohighlight">\(\ell=0\)</span>.</p>
 <p>There are three types of functions regarding needlets:</p>
 <ol class="arabic simple">
-<li>Functions to create needlets from their <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(j\)</span> parameters.</li>
-<li>Functions to filter a spherical map.</li>
-<li>Functions to visualize and compare different needlets.</li>
+<li><p>Functions to create needlets from their <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(j\)</span> parameters.</p></li>
+<li><p>Functions to filter a spherical map.</p></li>
+<li><p>Functions to visualize and compare different needlets.</p></li>
 </ol>
 <div class="section" id="needlet-creation">
 <h2>Needlet creation<a class="headerlink" href="#needlet-creation" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/needlets.standardneedlet.html#needlets.standardneedlet" title="needlets.standardneedlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">standardneedlet</span></code></a>(B,&nbsp;j,&nbsp;lmax)</td>
-<td>Return the needlet filter b(l) for a standard needlet with parameters <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/needlets.standardneedlet.html#needlets.standardneedlet" title="needlets.standardneedlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">standardneedlet</span></code></a>(B, j, lmax)</p></td>
+<td><p>Return the needlet filter b(l) for a standard needlet with parameters <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="functions/needlets.mexicanneedlet.html#needlets.mexicanneedlet" title="needlets.mexicanneedlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mexicanneedlet</span></code></a>(B,&nbsp;j,&nbsp;lmax[,&nbsp;p,&nbsp;normalised])</td>
-<td>Return the needlet filter b(l) for a Mexican needlet with parameters <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/needlets.mexicanneedlet.html#needlets.mexicanneedlet" title="needlets.mexicanneedlet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mexicanneedlet</span></code></a>(B, j, lmax[, p, normalised])</p></td>
+<td><p>Return the needlet filter b(l) for a Mexican needlet with parameters <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="map-filtering">
 <h2>Map filtering<a class="headerlink" href="#map-filtering" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/needlets.filtermap.html#needlets.filtermap" title="needlets.filtermap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filtermap</span></code></a>(mapp,&nbsp;bl[,&nbsp;returnalm])</td>
-<td>Filter the map with an input needlet.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/needlets.filtermap.html#needlets.filtermap" title="needlets.filtermap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filtermap</span></code></a>(mapp, bl[, returnalm])</p></td>
+<td><p>Filter the map with an input needlet.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="functions/needlets.filtermap_fromalm.html#needlets.filtermap_fromalm" title="needlets.filtermap_fromalm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filtermap_fromalm</span></code></a>(alm,&nbsp;bl,&nbsp;nside[,&nbsp;returnalm])</td>
-<td>Filter the map (given by its alm) with an input needlet.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/needlets.filtermap_fromalm.html#needlets.filtermap_fromalm" title="needlets.filtermap_fromalm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filtermap_fromalm</span></code></a>(alm, bl, nside[, returnalm])</p></td>
+<td><p>Filter the map (given by its alm) with an input needlet.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="needlet-visualization">
 <h2>Needlet visualization<a class="headerlink" href="#needlet-visualization" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/needlets.plot_bl.html#needlets.plot_bl" title="needlets.plot_bl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_bl</span></code></a>(bl[,&nbsp;newfigure,&nbsp;label])</td>
-<td>Plot the needlet filter b(l) in multipole space.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/needlets.plot_bl.html#needlets.plot_bl" title="needlets.plot_bl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_bl</span></code></a>(bl[, newfigure, label])</p></td>
+<td><p>Plot the needlet filter b(l) in multipole space.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="functions/needlets.plot_blprofile.html#needlets.plot_blprofile" title="needlets.plot_blprofile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_blprofile</span></code></a>(bl[,&nbsp;newfigure,&nbsp;unit,&nbsp;label])</td>
-<td>Plot the profile of the needlet in pixel space.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/needlets.plot_blprofile.html#needlets.plot_blprofile" title="needlets.plot_blprofile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_blprofile</span></code></a>(bl[, newfigure, unit, label])</p></td>
+<td><p>Plot the profile of the needlet in pixel space.</p></td>
 </tr>
 </tbody>
 </table>
@@ -265,7 +257,7 @@ a np.ndarray of dimension 1, with the values of the function for each <span clas
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

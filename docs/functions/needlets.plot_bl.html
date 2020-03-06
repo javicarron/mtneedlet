@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>needlets.plot_bl &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>needlets.plot_bl &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="needlets.plot_blprofile" href="needlets.plot_blprofile.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -180,28 +172,24 @@
 <h1>needlets.plot_bl<a class="headerlink" href="#needlets-plot-bl" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="needlets.plot_bl">
-<code class="descname">plot_bl</code><span class="sig-paren">(</span><em>bl</em>, <em>newfigure=True</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/needlets.html#plot_bl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#needlets.plot_bl" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot_bl</code><span class="sig-paren">(</span><em class="sig-param">bl</em>, <em class="sig-param">newfigure=True</em>, <em class="sig-param">label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/needlets.html#plot_bl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#needlets.plot_bl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the needlet filter b(l) in multipole space.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>bl</strong> (<em>np.ndarray</em>) – A numpy array containing the values of a needlet filter b(l), starting with l=0. It
-can also be an array containing several needlet filters.</li>
-<li><strong>newfigure</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the image will be created in a new Figure.</li>
-<li><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> or </em><em>list of strings</em><em>, </em><em>optional</em>) – Label to show in the legend of the figure.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bl</strong> (<em>np.ndarray</em>) – A numpy array containing the values of a needlet filter b(l), starting with l=0. It
+can also be an array containing several needlet filters.</p></li>
+<li><p><strong>newfigure</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the image will be created in a new Figure.</p></li>
+<li><p><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em> or </em><em>list of strings</em><em>, </em><em>optional</em>) – Label to show in the legend of the figure.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Figure containing the plot.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">matplotlib.figure.Figure</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Figure containing the plot.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -226,7 +214,7 @@ can also be an array containing several needlet filters.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tools.maximum_info &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>tools.maximum_info &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Extra tools" href="../tools.html" /> 
@@ -69,7 +61,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -176,32 +168,28 @@
 <h1>tools.maximum_info<a class="headerlink" href="#tools-maximum-info" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="tools.maximum_info">
-<code class="descname">maximum_info</code><span class="sig-paren">(</span><em>maxima</em>, <em>n</em>, <em>mapp</em>, <em>nmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tools.html#maximum_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.maximum_info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">maximum_info</code><span class="sig-paren">(</span><em class="sig-param">maxima</em>, <em class="sig-param">n</em>, <em class="sig-param">mapp</em>, <em class="sig-param">nmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tools.html#maximum_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tools.maximum_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show a plot with a maximum and some information about it.</p>
 <p>Utility function to easily view the basic propierties of a specific maximum.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>maxima</strong> (<em>pd.DataFrame</em>) – Pandas DataFrame with the information of the maxima. Has to contain at least the columns ‘Pixel number’ and ‘Intensity’.
-If it contains ‘pvalue’, it will use it. Otherwise, the p-value will be set to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</li>
-<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Row of the <code class="docutils literal notranslate"><span class="pre">maxima</span></code> with the information of the maximum to be shown.</li>
-<li><strong>mapp</strong> (<em>np.ndarray</em>) – Healpix map to be shown in the image.</li>
-<li><strong>nmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em>) – Total number of maxima detected in the map. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is introduced, it uses the length of the <code class="docutils literal notranslate"><span class="pre">maxima</span></code> table. Since this
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxima</strong> (<em>pd.DataFrame</em>) – Pandas DataFrame with the information of the maxima. Has to contain at least the columns ‘Pixel number’ and ‘Intensity’.
+If it contains ‘pvalue’, it will use it. Otherwise, the p-value will be set to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Row of the <code class="docutils literal notranslate"><span class="pre">maxima</span></code> with the information of the maximum to be shown.</p></li>
+<li><p><strong>mapp</strong> (<em>np.ndarray</em>) – Healpix map to be shown in the image.</p></li>
+<li><p><strong>nmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em>, </em><em>optional</em>) – Total number of maxima detected in the map. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is introduced, it uses the length of the <code class="docutils literal notranslate"><span class="pre">maxima</span></code> table. Since this
 can affect the results (if <code class="docutils literal notranslate"><span class="pre">maxima</span></code> does not contain all the maxima), the lines affected are colored grey and the function
-raises a warning.</li>
+raises a warning.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Figure containing the information about the maximum.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">matplotlib.figure.Figure</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Figure containing the information about the maximum.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -224,7 +212,7 @@ raises a warning.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mt.pvalues &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>mt.pvalues &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mt.max_getpvalue" href="mt.max_getpvalue.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -100,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../needlets.html">Needlets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maxima.html">Maxima</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mt.html">Multiple Testing</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../mt.html#theoretical-distribution">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mt.html#theoretical-distribution-f">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../mt.html#pvalues"><em>pvalues</em></a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">mt.pvalues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mt.max_getpvalue.html">mt.max_getpvalue</a></li>
@@ -180,28 +172,24 @@
 <h1>mt.pvalues<a class="headerlink" href="#mt-pvalues" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="mt.pvalues">
-<code class="descname">pvalues</code><span class="sig-paren">(</span><em>xvec</em>, <em>f</em>, <em>returnerror=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mt.html#pvalues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mt.pvalues" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">pvalues</code><span class="sig-paren">(</span><em class="sig-param">xvec</em>, <em class="sig-param">f</em>, <em class="sig-param">returnerror=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mt.html#pvalues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mt.pvalues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the p-values for a certain maxima distribution f, of diferent values of the intensity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xvec</strong> (<em>np.ndarray</em>) – Array with the intensities where the p-values will be calculated.</li>
-<li><strong>f</strong> (<em>function</em>) – Theoretical distribution of the maxima, f.</li>
-<li><strong>returnerror</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the output will contain both the p-value and the error of the integration.</li>
-<li><strong>**kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Additional arguments will be passed to np.integrate.quad for the calculation of the p-value.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xvec</strong> (<em>np.ndarray</em>) – Array with the intensities where the p-values will be calculated.</p></li>
+<li><p><strong>f</strong> (<em>function</em>) – Theoretical distribution of the maxima, f.</p></li>
+<li><p><strong>returnerror</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the output will contain both the p-value and the error of the integration.</p></li>
+<li><p><strong>**kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – Additional arguments will be passed to np.integrate.quad for the calculation of the p-value.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array containing the p-values calculated. If <code class="docutils literal notranslate"><span class="pre">returnerror</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will also containg the error of the integration.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array containing the p-values calculated. If <code class="docutils literal notranslate"><span class="pre">returnerror</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will also containg the error of the integration.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -226,7 +214,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

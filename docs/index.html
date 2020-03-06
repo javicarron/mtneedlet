@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to MTNeedlet’s documentation! &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>Welcome to MTNeedlet’s documentation! &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="installation.html" /> 
@@ -69,7 +61,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -170,12 +162,12 @@
 It has been developed with the CMB in mind, but it can be applied to other spherical maps. It pivots around three
 basic steps:</p>
 <ol class="arabic simple">
-<li>The calculation of several types of needlets and their possible use to filter maps.</li>
-<li>The detection of maxima (or minima) on spherical maps, their visualization and basic analysis.</li>
-<li>The multiple testing approach in order to detect anomalies in the maxima population of the maps
-with respect to the expected behaviour for a random Gaussian map.</li>
+<li><p>The calculation of several types of needlets and their possible use to filter maps.</p></li>
+<li><p>The detection of maxima (or minima) on spherical maps, their visualization and basic analysis.</p></li>
+<li><p>The multiple testing approach in order to detect anomalies in the maxima population of the maps
+with respect to the expected behaviour for a random Gaussian map.</p></li>
 </ol>
-<p>The original code was created to reproduce the results on <a class="footnote-reference" href="#id3" id="id1">[1]</a> and it was later used to produce the results on <a class="footnote-reference" href="#id4" id="id2">[2]</a>.
+<p>The original code was created to reproduce the results on <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and it was later used to produce the results on <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.
 This software heavily relies on Healpy (the Healpix implementation for Python) to eficiently deal with
 spherical maps.</p>
 <div class="toctree-wrapper compound">
@@ -199,7 +191,7 @@ spherical maps.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mt.html">Multiple Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mt.html#theoretical-distribution">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mt.html#theoretical-distribution-f">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="mt.html#pvalues"><em>pvalues</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="mt.html#id1">Multiple testing</a></li>
 </ul>
@@ -214,22 +206,18 @@ spherical maps.</p>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Cheng, D., Cammarota, V., Fantaye, Y., Marinucci, D., &amp; Schwartzman, A. (2016). Multiple testing of local maxima for detection of peaks on the (celestial) sphere. <em>Bernoulli, in press</em>, arXiv preprint arXiv:1602.08296.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Carron Duque, J., Buzzelli, A., Fantaye, Y., Marinucci, D., Schwartzman, A., &amp; Vittorio, N. (2019). Point Source Detection and False Discovery Rate Control on CMB Maps. arXiv preprint arXiv:1902.06636.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Cheng, D., Cammarota, V., Fantaye, Y., Marinucci, D., &amp; Schwartzman, A. (2016). Multiple testing of local maxima for detection of peaks on the (celestial) sphere. <em>Bernoulli, in press</em>, arXiv preprint arXiv:1602.08296.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Carron Duque, J., Buzzelli, A., Fantaye, Y., Marinucci, D., Schwartzman, A., &amp; Vittorio, N. (2019). Point Source Detection and False Discovery Rate Control on CMB Maps. <em>Astronomy and Computing</em> <a class="reference external" href="https://doi.org/10.1016/j.ascom.2019.100310">https://doi.org/10.1016/j.ascom.2019.100310</a> .</p>
+</dd>
+</dl>
 </div>
 
 
@@ -250,7 +238,7 @@ spherical maps.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

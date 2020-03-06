@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mt.f_fromSW &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>mt.f_fromSW &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mt.pvalues" href="mt.pvalues.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -100,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../needlets.html">Needlets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maxima.html">Maxima</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mt.html">Multiple Testing</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../mt.html#theoretical-distribution">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mt.html#theoretical-distribution-f">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="mt.f_fromks.html">mt.f_fromks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mt.f_fromcl.html">mt.f_fromcl</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">mt.f_fromSW</a></li>
@@ -181,35 +173,30 @@
 <h1>mt.f_fromSW<a class="headerlink" href="#mt-f-fromsw" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="mt.f_fromSW">
-<code class="descname">f_fromSW</code><span class="sig-paren">(</span><em>j</em>, <em>B</em>, <em>gamma=2.5</em>, <em>p=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mt.html#f_fromSW"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mt.f_fromSW" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">f_fromSW</code><span class="sig-paren">(</span><em class="sig-param">j</em>, <em class="sig-param">B</em>, <em class="sig-param">gamma=2.5</em>, <em class="sig-param">p=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mt.html#f_fromSW"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mt.f_fromSW" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the theoretical maxima distribution for a Sachs-Wolfe-like spectra filtered with a Mexican needlet.</p>
-<p>For more information, see <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>j</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency <code class="docutils literal notranslate"><span class="pre">j</span></code> of the Mexican needlet</li>
-<li><strong>B</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Parameter <code class="docutils literal notranslate"><span class="pre">B</span></code> of the Mexican needlet.</li>
-<li><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Parameter <code class="docutils literal notranslate"><span class="pre">gamma</span></code> for the Sach-Wolfe spectra. In the CMB, 2 &lt; gamma &lt; 3.</li>
-<li><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Order of the Mexican needlet</li>
+<p>For more information, see <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>j</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Frequency <code class="docutils literal notranslate"><span class="pre">j</span></code> of the Mexican needlet</p></li>
+<li><p><strong>B</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Parameter <code class="docutils literal notranslate"><span class="pre">B</span></code> of the Mexican needlet.</p></li>
+<li><p><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><em>optional</em>) – Parameter <code class="docutils literal notranslate"><span class="pre">gamma</span></code> for the Sach-Wolfe spectra. In the CMB, 2 &lt; gamma &lt; 3.</p></li>
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Order of the Mexican needlet</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Theoretical distribution of the maxima, f.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">function</p>
-</td>
-</tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Cheng, D., Cammarota, V., Fantaye, Y., Marinucci, D., &amp; Schwartzman, A. (2016). Multiple testing of local maxima for detection of peaks on the (celestial) sphere. <em>Bernoulli, in press</em>, arXiv preprint arXiv:1602.08296.</td></tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Theoretical distribution of the maxima, f.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Cheng, D., Cammarota, V., Fantaye, Y., Marinucci, D., &amp; Schwartzman, A. (2016). Multiple testing of local maxima for detection of peaks on the (celestial) sphere. <em>Bernoulli, in press</em>, arXiv preprint arXiv:1602.08296.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -234,7 +221,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

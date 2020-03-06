@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>maxima.hotspot &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>maxima.hotspot &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="maxima.locate_maxima" href="maxima.locate_maxima.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -179,39 +171,37 @@
 <h1>maxima.hotspot<a class="headerlink" href="#maxima-hotspot" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="maxima.hotspot">
-<code class="descname">hotspot</code><span class="sig-paren">(</span><em>mapp</em>, <em>minima=False</em>, <em>folder=None</em>, <em>name='Map'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/maxima.html#hotspot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maxima.hotspot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">hotspot</code><span class="sig-paren">(</span><em class="sig-param">mapp</em>, <em class="sig-param">minima=False</em>, <em class="sig-param">folder=None</em>, <em class="sig-param">name='Map'</em>, <em class="sig-param">hotspot_command='hotspot'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/maxima.html#hotspot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maxima.hotspot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the maxima (or minima) in a map.</p>
 <p class="rubric">Notes</p>
-<p>This function use the Healpix utility <code class="docutils literal notranslate"><span class="pre">hotspot</span></code>, which is not implemented in Python distribution of Healpix.
+<p>This function use the Healpix utility <code class="docutils literal notranslate"><span class="pre">hotspot</span></code>, which is not yet implemented in Python distribution of Healpix.
 The utility <code class="docutils literal notranslate"><span class="pre">healpix</span></code> is called on a terminal and it writes files on the hard drive. This function deletes these
-files after the are read by Python unless a specific folder is given as an input.</p>
+files after the are read by Python unless a specific folder is given as an input. This function requires
+<code class="docutils literal notranslate"><span class="pre">healpix</span></code> to be installed on the computer for now, although this is expected to change soon.</p>
 <p>The utility has several limitations regarding the intensity of the maxima. It only stores 4 digits before the
 period and 6 digits after it. It is highly recommended to normalise the map before using this function. For extreme
-cases, outliers have to be removed, for example with::
+cases, outliers have to be removed before applying the function, for example with::
 &gt;&gt;&gt; mapp[mapp&gt;9999]=9999</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mapp</strong> (<em>np.ndarray</em>) – A Healpy map of the sky.</li>
-<li><strong>minima</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this function return the minima instead of the maxima. We remind the user that the rest of the functions
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mapp</strong> (<em>np.ndarray</em>) – A Healpy map of the sky.</p></li>
+<li><p><strong>minima</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this function return the minima instead of the maxima. We remind the user that the rest of the functions
 are designed for set of maxima. If minima are to be used, we recommend changing the sign of the minima so the can be
-regarded as maxima of the <strong>opposite</strong> map.</li>
-<li><strong>folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Use only if the files generated by <code class="docutils literal notranslate"><span class="pre">hotspot</span></code> are to be stored. This argument indicates where.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the map to use in the written files. Unnecesary unless <code class="docutils literal notranslate"><span class="pre">folder</span></code> is given.</li>
+regarded as maxima of the <strong>opposite</strong> map.</p></li>
+<li><p><strong>folder</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Use only if the files generated by <code class="docutils literal notranslate"><span class="pre">hotspot</span></code> are to be stored. This argument indicates where.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the map to use in the written files. Unnecesary unless <code class="docutils literal notranslate"><span class="pre">folder</span></code> is given.</p></li>
+<li><p><strong>hotspot_command</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the command installed on the computer, usually ‘hotspot’ or ‘hotspot_gcc’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Pandas DataFrame with two columns: ‘Pixel number’ denotes the number of the pixel where the maximum is detected (depends
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pandas DataFrame with two columns: ‘Pixel number’ denotes the number of the pixel where the maximum is detected (depends
 on the <code class="docutils literal notranslate"><span class="pre">nside</span></code> of <code class="docutils literal notranslate"><span class="pre">mapp</span></code>); ‘Intensity’ denotes the value of this maxima in the input map</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.DataFrame</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -236,7 +226,7 @@ on the <code class="docutils literal notranslate"><span class="pre">nside</span>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>maxima.max_inmask &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>maxima.max_inmask &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="maxima.max_threshold" href="maxima.max_threshold.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -181,28 +173,24 @@
 <h1>maxima.max_inmask<a class="headerlink" href="#maxima-max-inmask" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="maxima.max_inmask">
-<code class="descname">max_inmask</code><span class="sig-paren">(</span><em>maxima</em>, <em>mask</em>, <em>withvalue=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/maxima.html#max_inmask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maxima.max_inmask" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">max_inmask</code><span class="sig-paren">(</span><em class="sig-param">maxima</em>, <em class="sig-param">mask</em>, <em class="sig-param">withvalue=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/maxima.html#max_inmask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maxima.max_inmask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the maxima located where the mask have a specific value (e.g., 1)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>maxima</strong> (<em>pd.DataFrame</em>) – Pandas DataFrame with the information of the maxima. Has to contain at least the column ‘Pixel number’.</li>
-<li><strong>mask</strong> (<em>np.ndarray</em>) – A Healpix map to be used as mask. <strong>Its ``nside`` should be the same as the original map.</strong></li>
-<li><strong>withvalue</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Value to be matched. Only maxima that have this value on the <code class="docutils literal notranslate"><span class="pre">mask</span></code> will be returned.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxima</strong> (<em>pd.DataFrame</em>) – Pandas DataFrame with the information of the maxima. Has to contain at least the column ‘Pixel number’.</p></li>
+<li><p><strong>mask</strong> (<em>np.ndarray</em>) – A Healpix map to be used as mask. <strong>Its ``nside`` should be the same as the original map.</strong></p></li>
+<li><p><strong>withvalue</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><em>optional</em>) – Value to be matched. Only maxima that have this value on the <code class="docutils literal notranslate"><span class="pre">mask</span></code> will be returned.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The same Pandas DataFrame as the input <code class="docutils literal notranslate"><span class="pre">maxima</span></code>, but containing only the maxima located at points where the
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The same Pandas DataFrame as the input <code class="docutils literal notranslate"><span class="pre">maxima</span></code>, but containing only the maxima located at points where the
 <code class="docutils literal notranslate"><span class="pre">mask</span></code> has the value <code class="docutils literal notranslate"><span class="pre">withvalue</span></code> (1 by default).</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.DataFrame</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -227,7 +215,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multiple Testing &mdash; MTNeedlet 0.1.0 documentation</title>
+  <title>Multiple Testing &mdash; MTNeedlet 0.0.5 documentation</title>
   
 
   
@@ -20,21 +20,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -43,6 +34,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="mt.f_fromks" href="functions/mt.f_fromks.html" />
@@ -70,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                0.0
               </div>
             
           
@@ -100,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="needlets.html">Needlets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maxima.html">Maxima</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Multiple Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#theoretical-distribution">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#theoretical-distribution-f">Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="functions/mt.f_fromks.html">mt.f_fromks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions/mt.f_fromcl.html">mt.f_fromcl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions/mt.f_fromSW.html">mt.f_fromSW</a></li>
@@ -191,57 +183,57 @@ maximum being produced by a point source): this is the <em>pvalue</em>. These ca
 or as a population. For the latter, we implement the Benjamini-Hochberg procedure of multiple testing.</p>
 <p>There are three types of functions regarding <em>pvalues</em> and multiple testing:</p>
 <ol class="arabic simple">
-<li>Functions to calculate the theoretical distribution of maxima <span class="math notranslate nohighlight">\(f\)</span>.</li>
-<li>Functions to calculate the <em>pvalue</em>.</li>
-<li>A functions to apply the multiple testing approach.</li>
+<li><p>Functions to calculate the theoretical distribution of maxima <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+<li><p>Functions to calculate the <em>pvalue</em>.</p></li>
+<li><p>A functions to apply the multiple testing approach.</p></li>
 </ol>
-<div class="section" id="theoretical-distribution">
-<h2>Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span><a class="headerlink" href="#theoretical-distribution" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<div class="section" id="theoretical-distribution-f">
+<h2>Theoretical distribution <span class="math notranslate nohighlight">\(f\)</span><a class="headerlink" href="#theoretical-distribution-f" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/mt.f_fromks.html#mt.f_fromks" title="mt.f_fromks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromks</span></code></a>(k1,&nbsp;k2)</td>
-<td>Get the theoretical maxima distribution f, from the values of k_1, k_2.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/mt.f_fromks.html#mt.f_fromks" title="mt.f_fromks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromks</span></code></a>(k1, k2)</p></td>
+<td><p>Get the theoretical maxima distribution f, from the values of k_1, k_2.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="functions/mt.f_fromcl.html#mt.f_fromcl" title="mt.f_fromcl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromcl</span></code></a>(cls)</td>
-<td>Get the theoretical maxima distribution f, from the angular power spectra C_l of a map.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/mt.f_fromcl.html#mt.f_fromcl" title="mt.f_fromcl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromcl</span></code></a>(cls)</p></td>
+<td><p>Get the theoretical maxima distribution f, from the angular power spectra C_l of a map.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="functions/mt.f_fromSW.html#mt.f_fromSW" title="mt.f_fromSW"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromSW</span></code></a>(j,&nbsp;B[,&nbsp;gamma,&nbsp;p])</td>
-<td>Get the theoretical maxima distribution for a Sachs-Wolfe-like spectra filtered with a Mexican needlet.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/mt.f_fromSW.html#mt.f_fromSW" title="mt.f_fromSW"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_fromSW</span></code></a>(j, B[, gamma, p])</p></td>
+<td><p>Get the theoretical maxima distribution for a Sachs-Wolfe-like spectra filtered with a Mexican needlet.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="pvalues">
 <h2><em>pvalues</em><a class="headerlink" href="#pvalues" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/mt.pvalues.html#mt.pvalues" title="mt.pvalues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pvalues</span></code></a>(xvec,&nbsp;f[,&nbsp;returnerror])</td>
-<td>Calculate the p-values for a certain maxima distribution f, of diferent values of the intensity.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/mt.pvalues.html#mt.pvalues" title="mt.pvalues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pvalues</span></code></a>(xvec, f[, returnerror])</p></td>
+<td><p>Calculate the p-values for a certain maxima distribution f, of diferent values of the intensity.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="functions/mt.max_getpvalue.html#mt.max_getpvalue" title="mt.max_getpvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_getpvalue</span></code></a>(maxima,&nbsp;f[,&nbsp;n_exact,&nbsp;step])</td>
-<td>Get the p-values for the maxima for a given expected distribution.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/mt.max_getpvalue.html#mt.max_getpvalue" title="mt.max_getpvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_getpvalue</span></code></a>(maxima, f[, n_exact, step, …])</p></td>
+<td><p>Get the p-values for the maxima for a given expected distribution.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id1">
 <h2>Multiple testing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="functions/mt.benjamini_hochberg.html#mt.benjamini_hochberg" title="mt.benjamini_hochberg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">benjamini_hochberg</span></code></a>(maxima,&nbsp;alpha[,&nbsp;plot])</td>
-<td>Select a subset of the maxima to be candidates to Point Source.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/mt.benjamini_hochberg.html#mt.benjamini_hochberg" title="mt.benjamini_hochberg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">benjamini_hochberg</span></code></a>(maxima, alpha[, plot])</p></td>
+<td><p>Select a subset of the maxima to be candidates to Point Source.</p></td>
 </tr>
 </tbody>
 </table>
@@ -268,7 +260,7 @@ or as a population. For the latter, we implement the Benjamini-Hochberg procedur
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Javier Carrón Duque
+        &copy; Copyright 2020, Javier Carrón Duque
 
     </p>
   </div>

@@ -58,6 +58,8 @@ def plot_blprofile(bl,newfigure=False,unit='min',label=None,**kwargs):
         ``'deg'`` for degrees or ``'rad'`` for radians
     label : str, optional
         Label to show in the legend of the figure.
+    **kwargs : optional
+        Any additional argument will be passed to matplotlib.plot
 
     Returns
     -------
@@ -204,7 +206,7 @@ def mexicanneedlet(B,j,lmax,p=1,normalised=True):
         for jj in j:
 #            u=(ls/B**jj)
 #            bl=u**(2.*p)*np.exp(-u**2.)
-            u=((ls*(ls+1)/B**(2.*j)))
+            u=((ls*(ls+1)/B**(2.*jj)))
             bl=(u**p)*np.exp(-u)
             needs.append(bl)
     else:
@@ -213,7 +215,7 @@ def mexicanneedlet(B,j,lmax,p=1,normalised=True):
         for jj in np.arange(1,jmax+1):
 #            u=(ls/B**jj)                   This is an almost identical definition
 #            bl=u**2.*np.exp(-u**2.)
-            u=((ls*(ls+1)/B**(2.*j)))
+            u=((ls*(ls+1)/B**(2.*jj)))
             bl=(u**p)*np.exp(-u)
             K=K+bl**2.
             if np.isin(jj,j):
@@ -242,7 +244,7 @@ def filtermap_fromalm(alm,bl,nside,returnalm=False):
         If ``returnalm=False``, filtered map in the Healpix format. If ``returnalm=True``, a list with the filtered map and its corresponding ``alm``.
     '''
     filtered_alm=hp.almxfl(alm,bl)/(np.sqrt(12)*nside)
-    betas=hp.alm2map(filtered_alm,nside);
+    betas=hp.alm2map(filtered_alm,nside,verbose=False);
     if returnalm == True:
         return([betas,filtered_alm])
     else:

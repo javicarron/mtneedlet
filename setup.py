@@ -9,7 +9,7 @@ setuptools.setup(
     name="mtneedlet",
     version=__version__,
     author="Javier Carron Duque",
-    author_email="javier.carron@uniroma1.it",
+    author_email="javier.carron@roma2.infn.it",
     description="A Python package for needlet filtering and Multiple Testing",
     long_description=long_description,
     long_description_content_type="text/markdown",
